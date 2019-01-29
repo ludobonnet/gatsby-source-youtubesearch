@@ -10,7 +10,9 @@ exports.sourceNodes = (
     maxResults: maxVideos,
     key:apiKey,
     part:"snippet",
-    order:"date"
+    order:"date",
+    type: "video",
+    videoEmbeddable: "true"
   };
 
   const getVideoId = (url) => {
@@ -20,13 +22,10 @@ exports.sourceNodes = (
       ID = url[2].split(/[^0-9a-z_\-]/i);
       ID = ID[0];
     }
-    else {
-      ID = url;
-    }
     return ID;
   }
 
-  const processVideo = video => {
+  const processVideo = video => {   
     video.videoId = getVideoId(video.link)
     const nodeId = createNodeId(`youtube-video-${video.id}`)
     const nodeContent = JSON.stringify(video)
@@ -61,7 +60,6 @@ exports.sourceNodes = (
 
   return Promise.all(channelsIds.map(channelId => {
       opts.channelId=channelId
-      // opts.channelId=channelsIds[0]
       return searchVideos(opts) 
       })
     )
