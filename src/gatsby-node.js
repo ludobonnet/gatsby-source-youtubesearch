@@ -1,5 +1,3 @@
-"use strict"
-
 const { search } = require(`./youtube`)
 
 exports.sourceNodes = (
@@ -7,6 +5,7 @@ exports.sourceNodes = (
   { searches, apiKey, maxVideos }
 ) => {
   const { createNode } = actions
+
   const globalOptions = {
     key: apiKey,
     part: `snippet`,
@@ -14,7 +13,6 @@ exports.sourceNodes = (
     type: `video`,
     videoEmbeddable: `true`,
   }
-
   if (maxVideos) {
     globalOptions.maxVideos = maxVideos
   }
@@ -32,6 +30,7 @@ exports.sourceNodes = (
         contentDigest: createContentDigest(video),
       },
     })
+
     return nodeData
   }
 
@@ -39,6 +38,7 @@ exports.sourceNodes = (
     searches.map(async options => {
       const opts = Object.assign(globalOptions, options)
       const results = await search(opts)
+
       return results.map(result => {
         const nodeData = processVideo(result)
         return createNode(nodeData)
