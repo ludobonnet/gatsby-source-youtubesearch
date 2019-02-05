@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-youtubesearch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "keywords": [
     "gatsbyjs",
@@ -20,7 +20,9 @@
   },
   "author": "Ludovic Bonnet <ludovic@bonnet.pro> (https://bonnet.pro)",
   "dependencies": {
-    "youtube-search": "^1.1.4"
+    "youtube-search": "^1.1.4",
+    "lodash": "^4.17.11",
+    "fs-extra": "^7.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -44,10 +46,8 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.81.0",
-    "fs-extra": "^7.0.1",
     "inquirer": "^6.2.2",
     "lint-staged": "^7.3.0",
-    "lodash": "^4.17.11",
     "prettier-eslint-cli": "^4.7.1",
     "yorkie": "^2.0.0"
   },
