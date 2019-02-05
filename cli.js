@@ -35,10 +35,10 @@ program
     })
   })
 program
-  .command(`build`)
+  .command(`build <path>`)
   .alias(`b`)
   .description(`Build videos data files`)
-  .action(() => {
-    buildAll()
+  .action(path => {
+    buildAll(path)
   })
 program.parse(process.argv)

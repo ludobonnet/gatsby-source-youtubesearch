@@ -2,8 +2,6 @@ const fs = require(`fs-extra`)
 const array = require(`lodash/array`)
 const chalk = require(`chalk`)
 
-const siteConfig = require(`./src/utils/siteConfig.js`)
-
 const { search } = require(`./youtube`)
 
 const dir = `./src/data/videos`
@@ -40,7 +38,9 @@ async function storeVideos(options) {
   }
 }
 
-async function buildAll() {
+async function buildAll(path) {
+  process.chdir(path)
+  const siteConfig = require(`${process.cwd()}/src/utils/siteConfig.js`)
   siteConfig.youtube.searches.map(query => {
     query.key = key
     storeVideos(query)
