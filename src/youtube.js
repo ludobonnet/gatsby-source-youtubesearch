@@ -7,16 +7,17 @@ const globalOptions = {
   videoEmbeddable: `true`,
 }
 
-const search = options => new Promise((resolve, reject) => {
+const search = options =>
+  new Promise((resolve, reject) => {
     const opts = Object.assign(globalOptions, options)
     YoutubeSearch(options.q, opts, function(err, results) {
       if (err) return reject(err)
 
-      results.forEach(result => {
+      results.map(result => {
         result.videoId = result.id
         return result
       })
-      resolve(results)
+      return resolve(results)
     })
   })
 

@@ -12,7 +12,8 @@
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "prepublishOnly": "cross-env NODE_ENV=production npm run build",
-    "watch": "npm run build -- -w"
+    "watch": "npm run build -- -w",
+    "lint": "eslint --ext .js src/**"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

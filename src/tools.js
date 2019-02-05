@@ -2,11 +2,11 @@ const fs = require(`fs-extra`)
 const array = require(`lodash/array`)
 const chalk = require(`chalk`)
 
-const siteConfig = require(`../../v3-scratch/src/utils/siteConfig.js`)
+const siteConfig = require(`./src/utils/siteConfig.js`)
 
 const { search } = require(`./youtube`)
 
-const dir = `./data/videos`
+const dir = `./src/data/videos`
 const key = process.env.GOOGLE_API_KEY
 
 async function storeVideos(options) {
